@@ -1,0 +1,46 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Detalhe da Nota Fiscal</strong>
+        </ng-template>
+
+        <div class="p-field">
+          <label> <strong>Id:</strong> </label>
+          <label>{{ data.id }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Número:</strong> </label>
+          <label>{{ data.numero }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Data Emissão:</strong> </label>
+          <label>{{ data.dataEmissao }}</label>
+        </div>
+
+        <div class="p-col-12">
+          <button
+            pButton
+            type="button"
+            [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-trash'"
+            label="Excluir"
+            class="p-button-raised p-button-danger"
+            (click)="excluir()"
+          ></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-backward"
+            class="p-button-raised p-button-primary"
+            (click)="voltar()"
+            label="Voltar"
+          ></button>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

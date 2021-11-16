@@ -1,0 +1,58 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Adicionar Item a nota fiscal</strong>
+        </ng-template>
+
+        <div class="p-field">Leilão Nº: {{ infoLeilao }}, aberto: {{ infoLeilaoAberto | yesNo }}</div>
+        <div class="p-field">Nota fiscal número: {{ infoNota }}</div>
+
+        <p-divider></p-divider>
+
+        <form [formGroup]="form">
+          <div class="p-field">
+            <label for="field-cpf-cnpj">Arrematante CPF/CNPJ</label>
+            <input pInputText type="text" id="field-placa-chassi" formControlName="cpfOuCnpj" maxlength="14" />
+            <p-message severity="error" text="{{ getErrorCpfOuCnpj() }}"
+              *ngIf="form.controls.cpfOuCnpj.invalid && form.controls.cpfOuCnpj.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-placa-chassi">Veículo Placa/Chassi</label>
+            <input pInputText type="text" id="field-placa-chassi" formControlName="placaOuChassi" maxlength="20" />
+            <p-message severity="error" text="{{ getErrorPlacaOuChassi() }}"
+              *ngIf="form.controls.placaOuChassi.invalid && form.controls.placaOuChassi.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-inicial">Valor Inicial</label>
+            <p-inputNumber inputId="field-inicial" mode="currency" currency="BRL" locale="pt-BR"
+              formControlName="valorInicial">
+            </p-inputNumber>
+            <p-message severity="error" text="{{ getErrorValorInicial() }}"
+              *ngIf="form.controls.valorInicial.invalid && form.controls.valorInicial.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-arrematado">Valor Arrematado</label>
+            <p-inputNumber inputId="field-arrematado" mode="currency" currency="BRL" locale="pt-BR"
+              formControlName="valorArrematado">
+            </p-inputNumber>
+            <p-message severity="error" text="{{ getErrorValorArrematado() }}"
+              *ngIf="form.controls.valorArrematado.invalid && form.controls.valorArrematado.dirty"></p-message>
+          </div>
+
+
+          <div class="p-col-12">
+            <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-save'" label="Salvar"
+              class="p-button-raised p-button-success" [disabled]="form.invalid" (click)="salvar()"></button>
+            <button pButton type="button" icon="pi pi-backward" (click)="voltar()" label="Voltar"></button>
+          </div>
+
+        </form>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

@@ -1,0 +1,51 @@
+<p-card>
+
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Detalhe do usuário</strong>
+        </ng-template>
+
+        <div class="p-field">
+          <label> <strong>Id:</strong> </label>
+          <label>{{ data.id }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Username:</strong> </label>
+          <label>{{ data.username }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Nome:</strong> </label>
+          <label>{{ data.nome }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Apelido:</strong> </label>
+          <label>{{ data.apelido }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Email:</strong> </label>
+          <label>{{ data.email }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Ativo:</strong> </label>
+          <label>{{ data.enabled | yesNo }}</label>
+        </div>
+
+
+        <div class="p-col-12">
+          <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-trash'" label="Excluir"
+            class="p-button-raised p-button-danger" (click)="excluir()"></button>
+          <button pButton type="button" icon="pi pi-backward" class="p-button-raised p-button-primary"
+            (click)="voltar()" label="Voltar"></button>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+
+</p-card>

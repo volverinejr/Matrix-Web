@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+.p-dropdown {
+  width: 100%;
+}
+
+
+.sizes .p-inputtext {
+  display: block;
+  margin-bottom: .5rem;
+  width: 100%;
+}
+
+.p-field label{
+  margin-bottom: 5px;
+}
+
+.p-field input {
+  width: 100%;
+}
+
+.p-inputtext:last-child {
+    margin-bottom: 0;
+}
+
+.p-field * {
+  display: block;
+}

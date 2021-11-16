@@ -1,0 +1,34 @@
+<div class="p-grid">
+  <div class="p-col-6 p-offset-3">
+    <p-panel>
+      <ng-template pTemplate="header">
+        <strong>Login</strong>
+      </ng-template>
+
+      <form [formGroup]="form">
+        <div class="p-field">
+          <label for="field-username">Username</label>
+          <input pInputText type="text" id="field-username" formControlName="username" autofocus required />
+          <p-message severity="error" text="{{ getErrorUsername() }}" *ngIf="
+              form.controls.username.invalid && form.controls.username.dirty
+            "></p-message>
+        </div>
+
+        <div class="p-field">
+          <label for="field-password">Password</label>
+          <input pInputText type="password" id="field-password" formControlName="password" required />
+          <p-message severity="error" text="{{ getErrorPassword() }}" *ngIf="
+              form.controls.password.invalid && form.controls.password.dirty
+            "></p-message>
+        </div>
+
+        <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-sign-in'" label="Login"
+          class="p-button-raised p-button-primary" [disabled]="form.invalid" (click)="login()"></button>
+      </form>
+
+      <ng-template pTemplate="footer">
+        <div class="p-text-center">Grupo Recursos</div>
+      </ng-template>
+    </p-panel>
+  </div>
+</div>

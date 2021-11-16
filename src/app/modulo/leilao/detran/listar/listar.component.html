@@ -1,0 +1,46 @@
+<br />
+<p-card>
+  <form [formGroup]="form">
+    <div class="p-field">
+      <label for="field-leilao">Leilão</label>
+      <p-dropdown
+        id="field-leilao"
+        [options]="leiloes"
+        formControlName="leilao"
+        optionLabel="numero"
+        placeholder="Seleicone..."
+        [showClear]="true"
+      ></p-dropdown>
+    </div>
+  </form>
+  <br />
+
+  <button
+    [disabled]="form.invalid"
+    type="button"
+    class="p-button-raised p-button-info"
+    pButton
+    [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-cloud-download'"
+    label="Gerar arquivo de seleção"
+    (click)="gerarArquivoSelecao()"
+  ></button>
+
+  <button
+    [disabled]="form.invalid"
+    type="button"
+    class="p-button-raised p-button-success"
+    pButton
+    icon="pi pi-check-circle"
+    label="Gerar arquivo de RESULTADO do leilão"
+    (click)="gerarArquivoResultado()"
+  ></button>
+
+  <button
+    type="button"
+    class="p-button-raised p-button-danger"
+    pButton
+    [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-cloud-upload'"
+    label="Carga do arquivo de retorno"
+    (click)="cargaArquivoRetorno()"
+  ></button>
+</p-card>

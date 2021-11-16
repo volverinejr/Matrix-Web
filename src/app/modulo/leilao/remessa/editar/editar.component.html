@@ -1,0 +1,48 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Atualizar remessa</strong>
+        </ng-template>
+
+        <form [formGroup]="form">
+          <div class="p-field">
+            <label for="field-ano">Ano</label>
+            <input pInputText type="number" id="field-ano" formControlName="ano" autofocus required />
+            <p-message severity="error" text="{{ getErrorAno() }}"
+              *ngIf="form.controls.ano.invalid && form.controls.ano.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-valor">Valor</label>
+            <input pInputText type="number" id="field-valor" formControlName="valor" required />
+            <p-message severity="error" text="{{ getErrorValor() }}"
+              *ngIf="form.controls.valor.invalid && form.controls.valor.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-nome-arquivo">Arquivo Envio</label>
+            <input pInputText type="text" id="field-nome-arquivo" formControlName="nomeArquivo"  required />
+            <p-message severity="error" text="{{ getErrorNomeArquivo() }}"
+              *ngIf="form.controls.nomeArquivo.invalid && form.controls.nomeArquivo.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-nomeArquivoRetorno">Arquivo Retorno</label>
+            <input pInputText type="text" id="field-nomeArquivoRetorno" formControlName="nomeArquivoRetorno"  required />
+            <p-message severity="error" text="{{ getErrorNomeArquivoRetorno() }}"
+              *ngIf="form.controls.nomeArquivoRetorno.invalid && form.controls.nomeArquivoRetorno.dirty"></p-message>
+          </div>
+
+          <div class="p-col-12">
+            <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-save'" label="Atualizar"
+              class="p-button-raised p-button-success" [disabled]="form.invalid" (click)="atualizar()"></button>
+            <button pButton type="button" icon="pi pi-backward" class="p-button-raised p-button-primary" (click)="voltar()" label="Voltar"></button>
+          </div>
+
+        </form>
+      </p-panel>
+    </div>
+</div>
+</p-card>

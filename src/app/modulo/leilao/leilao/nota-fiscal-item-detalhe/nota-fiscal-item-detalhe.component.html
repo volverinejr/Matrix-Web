@@ -1,0 +1,91 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Detalhe do Item</strong>
+        </ng-template>
+
+        <div class="p-field">
+          <label> <strong>Id:</strong> </label>
+          <label>{{ data.id }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Veículo:</strong> </label>
+          <label>{{ data.veiculo.placa }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Chassi:</strong> </label>
+          <label>{{ data.veiculo.chassi }}</label>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="p-field">
+          <label> <strong>Arrematante:</strong> </label>
+          <label>{{ data.arrematante.nome }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Endereço:</strong> </label>
+          <label>{{ data.arrematante.endereco }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Complemento:</strong> </label>
+          <label>{{ data.arrematante.complemento }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Número:</strong> </label>
+          <label>{{ data.arrematante.numero }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Bairro:</strong> </label>
+          <label>{{ data.arrematante.bairro }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>CEP:</strong> </label>
+          <label>{{ data.arrematante.cep }}</label>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="p-field">
+          <label> <strong>Valor inicial:</strong> </label>
+          <label>{{ data.valorInicial | currency:'BRL' }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Valor Arrematado:</strong> </label>
+          <label>{{ data.valorArrematado | currency:'BRL' }}</label>
+        </div>
+
+
+        <div class="p-col-12">
+          <button
+            pButton
+            type="button"
+            [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-trash'"
+            label="Excluir"
+            class="p-button-raised p-button-danger"
+            (click)="excluir()"
+          ></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-backward"
+            class="p-button-raised p-button-primary"
+            (click)="voltar()"
+            label="Voltar"
+          ></button>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

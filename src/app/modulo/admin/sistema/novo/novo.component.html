@@ -1,0 +1,29 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Adicionar sistema</strong>
+        </ng-template>
+
+        <form [formGroup]="form">
+          <div class="p-field">
+            <label for="field-nome">Nome</label>
+            <input pInputText type="text" id="field-nome" formControlName="nome"
+              autofocus required />
+            <p-message severity="error" text="{{ getErrorNome() }}"
+              *ngIf="form.controls.nome.invalid && form.controls.nome.dirty"></p-message>
+          </div>
+
+
+          <div class="p-col-12">
+            <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-save'" label="Salvar"
+              class="p-button-raised p-button-success" [disabled]="form.invalid" (click)="salvar()"></button>
+            <button pButton type="button" icon="pi pi-backward" (click)="voltar()" label="Voltar"></button>
+          </div>
+
+        </form>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

@@ -1,0 +1,42 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Adicionar leilão</strong>
+        </ng-template>
+
+        <form [formGroup]="form">
+          <div class="p-field">
+            <label for="field-numero">Número</label>
+            <input pInputText type="text" id="field-numero" formControlName="numero" autofocus required />
+            <p-message severity="error" text="{{ getErrorNumero() }}"
+              *ngIf="form.controls.numero.invalid && form.controls.numero.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label>Aberto</label>
+            <p-inputSwitch formControlName="aberto"></p-inputSwitch>
+          </div>
+
+
+          <div>
+            <label for="field-data-abertura">Data de Abertura</label>
+            <br>
+            <p-calendar inputId="field-data-abertura" id="field-data-abertura" formControlName="dataAberturaFormatada" dateFormat="dd/mm/yy"
+            [showButtonBar]="true" [showIcon]="true" [disabledDays]="[0,6]"></p-calendar>
+            <br><br>
+          </div>
+
+
+          <div class="p-col-12">
+            <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-save'" label="Salvar"
+              class="p-button-raised p-button-success" [disabled]="form.invalid" (click)="salvar()"></button>
+            <button pButton type="button" icon="pi pi-backward" (click)="voltar()" label="Voltar"></button>
+          </div>
+
+        </form>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

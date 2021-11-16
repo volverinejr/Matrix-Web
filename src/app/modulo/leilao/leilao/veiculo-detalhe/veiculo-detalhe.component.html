@@ -1,0 +1,79 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Detalhe do Veículo</strong>
+        </ng-template>
+
+        <div class="p-field">
+          <label> <strong>Id:</strong> </label>
+          <label>{{ data.id }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Placa:</strong> </label>
+          <label>{{ data.placa }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Chassi:</strong> </label>
+          <label>{{ data.chassi }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Pátio:</strong> </label>
+          <label>{{ data.patio }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Sucata:</strong> </label>
+          <label>{{ data.sucata | yesNo }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Data Apreensão:</strong> </label>
+          <label>{{ data.dataApreensao }}</label>
+        </div>
+
+        <p-divider></p-divider>
+
+        <div class="p-field">
+          <label> <strong>Retorno:</strong> </label>
+          <label>{{ data.retorno?.descricao }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Tipo de Atualização:</strong> </label>
+          <label>{{ data.tipoAtualizacao }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Número do termo:</strong> </label>
+          <label>{{ data.numeroTermo }}</label>
+        </div>
+
+
+        <div class="p-col-12">
+          <button
+            pButton
+            type="button"
+            [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-trash'"
+            label="Excluir"
+            class="p-button-raised p-button-danger"
+            (click)="excluir()"
+          ></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-backward"
+            class="p-button-raised p-button-primary"
+            (click)="voltar()"
+            label="Voltar"
+          ></button>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

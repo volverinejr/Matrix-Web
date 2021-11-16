@@ -1,0 +1,68 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Adicionar usuário</strong>
+        </ng-template>
+
+        <form [formGroup]="form">
+          <div class="p-field">
+            <label for="field-nome">Username</label>
+            <input pInputText type="text" id="field-nome" formControlName="username"
+              autofocus required />
+            <p-message severity="error" text="{{ getErrorUsername() }}"
+              *ngIf="form.controls.username.invalid && form.controls.username.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-password">Password</label>
+            <input pPassword type="password" id="field-password" formControlName="password" required maxLength="12"
+              promptLabel="informe sua senha" />
+            <p-message severity="error" text="{{ getErrorPassword() }}" *ngIf="
+              form.controls.password.invalid && form.controls.password.dirty
+            "></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-nome">Nome</label>
+            <input pInputText type="text" id="field-nome" formControlName="nome"
+               required />
+            <p-message severity="error" text="{{ getErrorNome() }}"
+              *ngIf="form.controls.nome.invalid && form.controls.nome.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-nome">Apelido</label>
+            <input pInputText type="text" id="field-nome" formControlName="apelido"
+               required />
+            <p-message severity="error" text="{{ getErrorApelido() }}"
+              *ngIf="form.controls.apelido.invalid && form.controls.apelido.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-email">Email</label>
+            <input pInputText type="text" id="field-email" formControlName="email" required />
+            <p-message severity="error" text="{{ getErrorEmail() }}"
+              *ngIf="form.controls.email.invalid && form.controls.email.dirty"></p-message>
+          </div>
+
+          <div class="p-field-ativo">
+            <label>Ativo</label>
+          </div>
+          <div class="p-field-ativo">
+            <p-inputSwitch formControlName="enabled"></p-inputSwitch>
+          </div>
+
+
+          <div class="p-col-12">
+            <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-save'" label="Salvar"
+              class="p-button-raised p-button-success" [disabled]="form.invalid" (click)="salvar()"></button>
+            <button pButton type="button" icon="pi pi-backward" (click)="voltar()" label="Voltar"></button>
+          </div>
+
+        </form>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

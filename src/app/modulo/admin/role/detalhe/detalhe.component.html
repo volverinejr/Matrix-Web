@@ -1,0 +1,30 @@
+<p-card>
+
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Detalhe da permissão</strong>
+        </ng-template>
+
+        <div class="p-field">
+          <label> <strong>Id:</strong> </label>
+          <label>{{ data.id }}</label>
+        </div>
+
+        <div class="p-field">
+          <label> <strong>Nome:</strong> </label>
+          <label>{{ data.nome }}</label>
+        </div>
+
+        <div class="p-col-12">
+          <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-trash'" label="Excluir"
+            class="p-button-raised p-button-danger" (click)="excluir()"></button>
+          <button pButton type="button" icon="pi pi-backward" class="p-button-raised p-button-primary"
+            (click)="voltar()" label="Voltar"></button>
+        </div>
+      </p-panel>
+    </div>
+  </div>
+
+</p-card>

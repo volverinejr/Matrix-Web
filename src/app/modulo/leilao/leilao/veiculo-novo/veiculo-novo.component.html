@@ -1,0 +1,61 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Adicionar veículo ao leilão</strong>
+        </ng-template>
+
+          <div class="p-field">Leilão: {{ id }}</div>
+          <div class="p-field">Número: {{ infoLeilao }}</div>
+
+          <p-divider></p-divider>
+
+        <form [formGroup]="form">
+          <div class="p-field">
+            <label for="field-placa">Placa</label>
+            <input pInputText type="text" id="field-placa" formControlName="placa" autofocus />
+            <p-message severity="error" text="{{ getErrorPlaca() }}"
+              *ngIf="form.controls.placa.invalid && form.controls.placa.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-chassi">Chassi</label>
+            <input pInputText type="text" id="field-chassi" formControlName="chassi" />
+            <p-message severity="error" text="{{ getErrorChassi() }}"
+              *ngIf="form.controls.chassi.invalid && form.controls.chassi.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label for="field-patio">Pátio</label>
+            <input pInputText type="text" id="field-patio" formControlName="patio" />
+            <p-message severity="error" text="{{ getErrorPatio() }}"
+              *ngIf="form.controls.patio.invalid && form.controls.patio.dirty"></p-message>
+          </div>
+
+          <div class="p-field">
+            <label>Sucata</label>
+            <p-inputSwitch formControlName="sucata"></p-inputSwitch>
+          </div>
+
+
+          <div>
+            <label for="field-data-apreensao">Data Apreensão</label>
+            <br>
+            <p-calendar inputId="field-data-apreensao" id="field-data-apreensao" formControlName="dataApreensao" dateFormat="dd/mm/yy"
+            [showButtonBar]="true" [showIcon]="true"></p-calendar>
+            <br><br>
+          </div>
+
+
+          <div class="p-col-12">
+            <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-save'" label="Salvar"
+              class="p-button-raised p-button-success" [disabled]="form.invalid" (click)="salvar()"></button>
+            <button pButton type="button" icon="pi pi-backward" (click)="voltar()" label="Voltar"></button>
+          </div>
+
+        </form>
+      </p-panel>
+    </div>
+  </div>
+</p-card>

@@ -1,0 +1,104 @@
+<br />
+
+<p-card>
+  <p-fieldset legend="{{ nomeUser }} X Permissão">
+    <!-- GRID -->
+    <p-table
+      #dt
+      [value]="dataSouce"
+      [loading]="carregandoGrid"
+      [paginator]="true"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="{first} de {last} | Total {totalRecords} registros."
+      emptymessage="Nenhum registro encontrado"
+      selectionMode="single"
+      [resizableColumns]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [totalRecords]="totalRecords"
+      [rows]="10"
+      [lazy]="true"
+      (onLazyLoad)="lazyLoad($event)"
+      [lazyLoadOnInit]="false"
+      [globalFilterFields]="['id', 'nome']"
+      styleClass="p-datatable-striped"
+      sortField="id"
+      [sortOrder]="pagOrdem"
+    >
+      <ng-template pTemplate="caption">
+        <div class="p-d-flex">
+          <span class="p-input-icon-left p-ml-auto">
+            <i class="pi pi-search"></i>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filterGlobal($event.target, 'contains')"
+              placeholder="Pesquisar"
+            />
+          </span>
+        </div>
+      </ng-template>
+
+      <!-- CABECALHO -->
+      <ng-template pTemplate="header" class="ui-column-title">
+        <tr>
+          <th width="10%" pResizableColumn pSortableColumn="id">
+            #<p-sortIcon field="id"></p-sortIcon>
+          </th>
+          <th pResizableColumn pSortableColumn="nome">
+            Nome <p-sortIcon field="nome"></p-sortIcon>
+          </th>
+          <th width="10%"><i class="pi pi-cog"></i></th>
+        </tr>
+      </ng-template>
+
+      <!-- CORPO -->
+      <ng-template pTemplate="body" let-linha>
+        <tr [pSelectableRow]="linha">
+          <td>{{ linha.id }}</td>
+          <td>{{ linha.nome }}</td>
+          <td>
+            <button
+              *ngIf="linha.cadastrado == '0'"
+              type="button"
+              (click)="add(linha.id)"
+              pButton
+              icon="pi pi-plus"
+              class="p-button-raised p-button-rounded p-button-help"
+              pTooltip="add permisão ao usuário"
+            ></button>
+
+            <button
+              *ngIf="linha.cadastrado != '0'"
+              type="button"
+              (click)="remover(linha.id)"
+              pButton
+              icon="pi pi-minus"
+              class="p-button-raised p-button-rounded p-button-warning"
+              pTooltip="remover permisão do usuário"
+            ></button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="paginatorleft">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-backward"
+          (click)="voltar()"
+          label="Voltar"
+        ></button>
+      </ng-template>
+
+      <ng-template pTemplate="paginatorright"> </ng-template>
+
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td [attr.colspan]="3">
+            <h4>Nenhum registro encontrado.</h4>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-fieldset>
+</p-card>

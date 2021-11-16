@@ -1,0 +1,41 @@
+<p-card>
+  <div class="p-grid">
+    <div class="p-col-6 p-offset-3">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <strong>Atualizar nota fiscal</strong>
+        </ng-template>
+
+          <div class="p-field">Leilão: {{ id }}</div>
+          <div class="p-field">Número: {{ infoLeilao }}</div>
+
+          <p-divider></p-divider>
+
+        <form [formGroup]="form">
+          <div class="p-field">
+            <label for="field-numero">Número da nota</label>
+            <input pInputText type="text" id="field-numero" formControlName="numero" autofocus />
+            <p-message severity="error" text="{{ getErrorNumero() }}"
+              *ngIf="form.controls.numero.invalid && form.controls.numero.dirty"></p-message>
+          </div>
+
+          <div>
+            <label for="field-data-apreensao">Data Emissão</label>
+            <br>
+            <p-calendar inputId="field-data-emissao" id="field-data-emissao" formControlName="dataEmissao" dateFormat="dd/mm/yy"
+            [showButtonBar]="true" [showIcon]="true"></p-calendar>
+            <br><br>
+          </div>
+
+
+          <div class="p-col-12">
+            <button pButton type="button" [icon]="carregando ? 'pi pi-spin pi-spinner' : 'pi pi-save'" label="Salvar"
+              class="p-button-raised p-button-success" [disabled]="form.invalid" (click)="atualizar()"></button>
+            <button pButton type="button" icon="pi pi-backward" (click)="voltar()" label="Voltar"></button>
+          </div>
+
+        </form>
+      </p-panel>
+    </div>
+  </div>
+</p-card>
